@@ -31,6 +31,6 @@ impl Cache {
     }
 
     pub async fn get_conn(&self) -> PooledConnection<'_, RedisConnectionManager> {
-        self.pool.get().await.unwrap()
+        self.pool.get().await.expect("Failed Connection to Redis Server")
     }
 }
