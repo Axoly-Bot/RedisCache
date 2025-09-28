@@ -1,0 +1,12 @@
+[package]
+name = "RedisCache"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bb8-redis = "0.13.1"
+redlight = { git = "https://github.com/MaxOhn/redlight.git", version = "0.1.0" }
+rkyv = "0.8.11"
+tokio = { version = "1.47.1", features = ["full"] }
+twilight-model = "0.16.0"
+
