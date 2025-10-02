@@ -6,6 +6,7 @@ use crate::config::Config;
 
 mod config;
 
+#[derive(Clone)]
 pub struct Cache {
     pub twilight_cache: Arc<RedisCache<Config>>,
     pub pool: Pool<RedisConnectionManager>
