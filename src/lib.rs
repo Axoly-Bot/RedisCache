@@ -13,8 +13,8 @@ pub struct Cache {
 }
 
 impl Cache {
-    pub async fn new() -> Self {
-        let manager = RedisConnectionManager::new("redis://localhost").unwrap();
+    pub async fn new(url:String) -> Self {
+        let manager = RedisConnectionManager::new(url).unwrap();
         let pool = bb8::Pool::builder().build(manager).await.unwrap();
         
         let cache = RedisCache::<Config>::new_with_pool(pool.clone())

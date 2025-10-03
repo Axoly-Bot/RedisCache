@@ -1,19 +1,16 @@
 #[cfg(test)]
 mod tests {
-    use std::time::Duration;
-
-    use bb8_redis::redis::AsyncCommands;
     use bb8_redis::redis;
     use tokio::time::Instant;
-    use RedisCache::Cache;
+    use redis_cache::Cache;
 
     #[tokio::test]
     async fn test_redis_connection() {
         let start_time = Instant::now();
-        let cache = Cache::new().await;
+        let cache = Cache::new("redis://localhost".to_string()).await;
         
         // Usa AsyncCommands en lugar de query_async directamente
-        let mut conn = cache.get_conn().await;
+        let _conn = cache.get_conn().await;
         
         println!("Han pasado: {}ms", start_time.elapsed().as_millis())
 
@@ -22,12 +19,12 @@ mod tests {
     #[tokio::test]
     async fn test_ping() {
         let start_time = Instant::now();
-        let cache = Cache::new().await;
-        let mut conn = cache.get_conn().await;
+        let cache = Cache::new("redis://localhost".to_string()).await;
+        let mut _conn = cache.get_conn().await;
         
         // Método correcto para hacer PING
         let reply: String = redis::cmd("PING")
-            .query_async(&mut conn as &mut bb8_redis::redis::aio::Connection)
+            .query_async(&mut _conn as &mut bb8_redis::redis::aio::Connection)
             .await
             .unwrap();
             

@@ -3,17 +3,6 @@
 version = 4
 
 [[package]]
-name = "RedisCache"
-version = "0.1.0"
-dependencies = [
- "bb8-redis",
- "redlight",
- "rkyv",
- "tokio",
- "twilight-model",
-]
-
-[[package]]
 name = "addr2line"
 version = "0.25.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -600,6 +589,17 @@ dependencies = [
  "tokio",
  "tokio-util",
  "url",
+]
+
+[[package]]
+name = "redis_cache"
+version = "0.2.1"
+dependencies = [
+ "bb8-redis",
+ "redlight",
+ "rkyv",
+ "tokio",
+ "twilight-model",
 ]
 
 [[package]]
